@@ -6,6 +6,7 @@ Inlist::Application.routes.draw do
   get 'welcome/' => 'users#new'
 
   resources :items
+  get 'itemlist/' => 'items#list', as: :item_list
 
   root 'users#index'
 
