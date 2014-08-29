@@ -1,0 +1,19 @@
+<h1> Scrape Item </h1>
+
+<h3>
+    <%= @item.title %><br>
+    <%= @item.description %><br>
+    <%= @item.meta['keywords'] %><br>
+    <%= @item.url %><br>
+    <%= image_tag (@item.image) %><br>
+</h3>
+
+
+<%= form_for :item do |f| %>
+    <%= hidden_field(:item, :title) %>
+    <%= hidden_field(:item, :description) %>
+    <%= hidden_field(:item, :url) %>
+    <%= hidden_field(:item, :image) %>
+
+    <%= f.submit "save" %>
+<% end %>
