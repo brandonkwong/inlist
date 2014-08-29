@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params.require(:item).permit(:title, :description, :image, :url)) 
     if @item.save
-      redirect_to root_path
+      redirect_to item_list_path
     else
       render 'new'
     end
@@ -25,4 +25,9 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def list
+    @items = Item.all
+  end
+
 end
+
