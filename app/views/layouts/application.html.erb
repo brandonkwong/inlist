@@ -12,7 +12,14 @@
     </head>
     <body class="<%= params[:controller] %>_controller">
         
-        <div class="container">
+        <!-- Login -->
+        <%= render 'partials/login' %>
+
+        <!-- Navbar -->
+        <%= render 'partials/navbar' %>
+          
+        <!-- Content -->
+        <div class="container-fluid">
             <%= yield %>
         </div>
 
