@@ -1,0 +1,68 @@
+<% if @has_navbar %>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+        <!-- Mobile Navbar Button -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to 'InList', root_path, class: 'navbar-brand' %>
+        </div>
+
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <!-- Search -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Find a location">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </li>
+
+            <% if current_user %>
+            <li>
+                <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#group"><i class="fa fa-plus-square"></i>&nbsp; New Group</button>
+            </li>
+            <% end %>
+        </ul>
+
+        <!-- Collapse Toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <!-- Navbar Right -->
+            <ul class="nav navbar-nav navbar-right">
+
+                <!-- Logged In -->
+                <% if current_user %>
+                <li>
+                    <button type="button" class="btn btn-default navbar-btn" data-ng-click="locateMe()"><i class="fa fa-user"></i>&nbsp; <%= current_user.name %></button>
+                </li>
+                <li>&nbsp;</li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'Account', edit_user_path(current_user.id) %></li>
+                        <li class="divider"></li>
+                        <li><%= link_to 'Log Out', session_path, method: :delete %></li>
+                    </ul>
+                </li>
+
+                <!-- Logged Out -->
+                <% else %>
+                <!-- Note: URL Path ends in '?'' -->
+                <li><%= button_to 'Sign Up', welcome_path, method: :get, class: 'btn btn-default navbar-btn' %></li>
+                <li><button type="submit" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#login">Log In</button></li>
+                <% end %>
+
+            </ul> <!-- end navbar-right -->
+
+        </div> <!-- end collapse -->
+
+    </div> <!-- end container-fluid -->
+</nav>
+<% end %>

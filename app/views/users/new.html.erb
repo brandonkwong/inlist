@@ -1,14 +1,12 @@
-<h1>users#new</h1>
-
 <h1>InList</h1>
 <p>Our tagline goes here.</p>
 <%= form_for @user, html: { role: 'form' } do |f| %>
-  <div class="form-group">
-    <%= f.text_field :username, placeholder: 'Username', class: 'form-control', autofocus: true %>
-    <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
-    <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-    <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-    <%= f.password_field :password_confirmation, placeholder: 'Retype Password', class: 'form-control' %>
-  </div>
-  <%= f.submit 'SIGN UP', class: 'btn btn-default' %>
+    <div class="form-group">
+        <%= f.text_field :username, placeholder: 'Username', class: 'form-control', autofocus: true %>
+        <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+        <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+        <%= f.password_field :password_confirmation, placeholder: 'Retype Password', class: 'form-control' %>
+    </div>
+    <%= f.submit 'SIGN UP', class: 'btn btn-default' %>
 <% end %>

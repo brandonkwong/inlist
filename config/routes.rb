@@ -1,6 +1,9 @@
 Inlist::Application.routes.draw do
 
-  resources :users
+  resource :session, only: [:new, :create, :destroy]
+
+  resources :users, except: [:index, :new]
+  get 'welcome/' => 'users#new'
 
   root 'users#index'
 
