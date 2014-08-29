@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :header
+
 
   def index
     @item = MetaInspector.new(params[:url])
