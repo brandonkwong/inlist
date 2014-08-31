@@ -8,6 +8,8 @@ Inlist::Application.routes.draw do
   resources :items
   get 'itemlist/' => 'items#list', as: :item_list
 
+  resources :tags
+
   root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
