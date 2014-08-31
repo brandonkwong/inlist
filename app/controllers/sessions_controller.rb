@@ -1,10 +1,5 @@
 class SessionsController < ApplicationController
 
-  def new
-    @user_login = User.new
-    @is_login = true
-  end
-
   def create
     user = User.where(email: params[:user][:email]).first
     # Checks to see if the user exists, and then for a matching password

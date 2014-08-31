@@ -3,14 +3,18 @@ class UsersController < ApplicationController
   before_action :header
 
   def index
-    @users = User.all
+    if current_user
+      @users = User.all
+    else
+      redirect_to welcome_path
+    end
   end
 
   def show
   end
 
   def new
-    @navbar = false
+    @has_navbar = false
     @user = User.new
     @is_signup = true
   end
@@ -24,10 +28,6 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
-
-
-
 
   # def edit
   #   if current_user == User.find(params[:id])
@@ -52,7 +52,6 @@ class UsersController < ApplicationController
   #   User.find(params[:id]).destroy
   #   redirect_to welcome_path
   # end
-
 
   private
 
