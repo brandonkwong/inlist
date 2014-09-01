@@ -1,12 +1,16 @@
 Inlist::Application.routes.draw do
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:create, :destroy]
 
   resources :users, except: [:index, :new]
   get 'welcome/' => 'users#new'
 
   resources :items
   get 'itemlist/' => 'items#list', as: :item_list
+
+  get 'items/' => 'items#index'
+
+  # match 'item_meta/' => 'users#item_meta', :as => :item_meta, :via => :post
 
   resources :tags
 

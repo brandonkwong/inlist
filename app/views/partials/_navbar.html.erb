@@ -1,6 +1,6 @@
 <% if @has_navbar %>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Mobile Navbar Button -->
         <div class="navbar-header">
@@ -15,18 +15,27 @@
 
         <ul class="nav navbar-nav navbar-left">
             <li>
+                <!-- MetaInspector -->
+                <form class="navbar-form navbar-left" action="/items">
+                    <div class="form-group">
+                        <input type="url" name="url" placeholder="https://" required class="form-control">
+                        <button type="submit" class="btn btn-default">Add Item</button>
+                    </div>
+                </form>
+            </li>
+            <li>
                 <!-- Search -->
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Find a location">
+                        <input type="text" class="form-control" placeholder="Find items by tags">
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="submit" class="btn btn-default">Q</button>
                 </form>
             </li>
 
             <% if current_user %>
             <li>
-                <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#group"><i class="fa fa-plus-square"></i>&nbsp; New Group</button>
+                <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#group"><i class="fa fa-plus-square"></i>&nbsp; Temp Btn</button>
             </li>
             <% end %>
         </ul>

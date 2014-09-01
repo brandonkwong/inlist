@@ -4,12 +4,8 @@ class ItemsController < ApplicationController
   
   def index
     @item = MetaInspector.new(params[:url])
-    # respond_to do |format|
-    #   format.json { render :json => [
-    #         title: page.title,
-    #         description: page.description
-    #     ] }
-    # end
+
+    @tag = Tag.new
   end
 
   def list
@@ -23,6 +19,7 @@ class ItemsController < ApplicationController
   def create
     # Create Item
     @item = Item.new(item_params)
+    # @item_meta = MetaInspector.new(item_params[:url])
     if @item.save
       # Create Tags
       # Scan user input for individual word characters
