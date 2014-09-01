@@ -1,20 +1,23 @@
-<h1> Scrape Item </h1>
+<h3><%= @item.title %></h3>
+
+Description: <%= @item.description %><br><br>
+URL: <%= @item.url %><br><br>
+Image: <strong>(NOTE: item does not save if no image is present)</strong>
+<br><%= image_tag(@item.image) %><br>
 
 
-<h3>
-    <%= @item.title %><br>
-    <%= @item.description %><br>
-    <%= @item.meta['keywords'] %><br>
-    <%= @item.url %><br>
-    <%= image_tag (@item.image) %><br>
-</h3>
-
+<br>
 
 <%= form_for :item do |f| %>
+
+    <%= fields_for @tag do |ff| %>
+        <% ff.text_field :name, placeholder: 'Tags' %>
+    <% end %>
+    
     <%= hidden_field(:item, :title) %>
     <%= hidden_field(:item, :description) %>
     <%= hidden_field(:item, :url) %>
     <%= hidden_field(:item, :image) %>
 
-    <%= f.submit "save" %>
+    <%= f.submit "Save Item" %>
 <% end %>

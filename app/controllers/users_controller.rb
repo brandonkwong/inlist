@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user
-      @users = User.all
+      @items = Item.all
     else
       redirect_to welcome_path
     end
