@@ -1,5 +1,4 @@
-class Item < ActiveRecord::Base
-  
+class Item < ActiveRecord::Base  
   validates_presence_of :title, :description, :url, :image
 
 
