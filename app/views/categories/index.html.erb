@@ -1,0 +1,14 @@
+<h1>Categories</h1>
+
+<%= form_for :category do |c| %>
+<%= c.text_field :name, placeholder: "name your category" %>
+
+<%= c.submit 'make category', class: 'btn btn-default'%>
+<% end %>
+
+<br/>
+
+<% @category.each do |c| %>
+
+<%= c.name %>
+<% end %>

@@ -13,7 +13,7 @@ Inlist::Application.routes.draw do
   # match 'item_meta/' => 'users#item_meta', :as => :item_meta, :via => :post
 
   resources :tags
-
+  resources :categories
   root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
