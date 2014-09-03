@@ -5,10 +5,17 @@ Inlist::Application.routes.draw do
   resources :users, except: [:index, :new]
   get 'welcome/' => 'users#new'
 
-  resources :items
+  resources :items, shallow: true do
+    resources :comments
+  end
+
+
+
   get 'itemlist/' => 'items#list', as: :item_list
 
   get 'items/' => 'items#index'
+
+
 
   # match 'item_meta/' => 'users#item_meta', :as => :item_meta, :via => :post
 

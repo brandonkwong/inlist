@@ -1,0 +1,27 @@
+class CommentsController < ApplicationController
+  before_action :header
+
+  def index
+    @comment = Comment.new
+    @items = Item.all
+  end
+
+
+  def create
+    @item = Item.find(params[:item_id])
+    @comment = current_user.comments.new(comment_params)
+    @comment.item_id = @item.id
+    if @comment.save
+      redirect_to root_path
+    else
+      render 'users/index'
+    end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:comment, :item_id)
+  end
+
+end

@@ -24,6 +24,21 @@
         <%= image_tag i.image, class: 'image-test' %>
 
         <br><br>
+        <% i.comments.each do |c| %>
+            <%= c.comment %>
+        <% end %>
+
+        <br><br>
+        <%= form_for [i, @comment] do |f| %>
+
+            <%= f.text_area :comment, placeholder: 'comment goes here' %>
+            <%= f.submit %>
+
+        <% end %>
+
+
+        <br><br>
+
     </div>
 
     <% if (@items.index(i)+1) % 4 == 0 %>
