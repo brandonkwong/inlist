@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = User.Category.new(params.require(:category).permit(:name, :item_id))
+    @category = current_user.categories.new(params.require(:category).permit(:name, :item_id))
     if @category.save
       redirect_to index_path
     else
@@ -13,7 +13,9 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = @category.destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to root_path
   end
   
 end

@@ -4,11 +4,11 @@
 <%= c.text_field :name, placeholder: "name your category" %>
 
 <%= c.submit 'make category', class: 'btn btn-default'%>
-
+<% end %>
 
 <br/>
 
-<% @categories.each do |c| %>
+<% @category.each do |c| %>
 
 <%= c.name %>
 <% end %>
