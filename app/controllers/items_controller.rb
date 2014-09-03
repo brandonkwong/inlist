@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     # Create Item
-    @item = Item.new(item_params)
+    @item = current_user.items.new(item_params)
     # @item_meta = MetaInspector.new(item_params[:url])
     if @item.save
       # Create Tags
