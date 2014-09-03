@@ -10,6 +10,8 @@ Inlist::Application.routes.draw do
 
   get 'items/' => 'items#index'
 
+  resources :comments
+
   # match 'item_meta/' => 'users#item_meta', :as => :item_meta, :via => :post
 
   resources :tags
