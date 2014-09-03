@@ -11,4 +11,5 @@ class CreateItems < ActiveRecord::Migration
       t.timestamps
     end
   end
+
 end
