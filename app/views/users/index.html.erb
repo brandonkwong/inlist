@@ -2,13 +2,15 @@
 
 <br>
 
+<!-- Collection -->
 <% @items.each do |i| %>
 
+    <!-- Collection Row -->
     <% if @items.index(i) == 0 || (@items.index(i)+1) % 4 == 0 %>
        <div class="row">
     <% end %>
 
-    
+    <!-- Items -->
     <div class="col-md-3">
         <strong><%= i.title %></strong>
 
@@ -24,16 +26,19 @@
         <%= image_tag i.image, class: 'image-test' %>
 
         <br><br>
+
+        <!-- Comments -->
         <% i.comments.each do |c| %>
-            <%= c.comment %>
+            <%= c.user_id.name %>:
+            <%= c.comment %><br>
         <% end %>
 
         <br><br>
-        <%= form_for [i, @comment] do |f| %>
 
+        <!-- Comment Form -->
+        <%= form_for [i, @comment] do |f| %>
             <%= f.text_area :comment, placeholder: 'comment goes here' %>
             <%= f.submit %>
-
         <% end %>
 
 
@@ -41,6 +46,7 @@
 
     </div>
 
+    <!-- Collection Row End -->
     <% if (@items.index(i)+1) % 4 == 0 %>
         </div>
         <hr>
