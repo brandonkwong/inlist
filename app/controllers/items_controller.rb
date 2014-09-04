@@ -1,12 +1,19 @@
 class ItemsController < ApplicationController
   
   before_action :header
-  
-  def index
-    @item = MetaInspector.new(params[:url])
 
-    @tag = Tag.new
+  respond_to :json
+
+  def index
+    @items = Item.all
+    respond_with @items, each_serializer: ItemSerializer
   end
+  
+  # def index
+  #   @item = MetaInspector.new(params[:url])
+
+  #   @tag = Tag.new
+  # end
 
   def list
     @items = Item.all
