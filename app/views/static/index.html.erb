@@ -9,8 +9,12 @@
     <h3>#{{tag.name}}</h3>
 
         <div class="row">
-            <div data-ng-repeat="item in tag.items">
+            <div data-ng-repeat="item in tag.items" data-ng-model="row">
 
+
+                <%# if tag.items.indexOf(item) == 0 %>
+                <!-- asdf -->
+                <%# end %>
                 
                     <div class="col-md-3">
                         <strong>{{item.title}}</strong>
