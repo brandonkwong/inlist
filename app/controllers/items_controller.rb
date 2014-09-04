@@ -18,11 +18,13 @@ class ItemsController < ApplicationController
   def list
     @items = Item.all
     @comment = Comment.new
+    @category = Category.new
   end
 
   def add
     @item = MetaInspector.new(params[:url])
     @tag = Tag.new
+    @category_options = current_user.categories.all.sort_by{ |alpha| alpha.name.downcase }.map{ |g| [ g.name, g.id ] }
   end
   
   def new 

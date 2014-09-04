@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
     if current_user == Category.find(params[:id]).user
       @category = Category.find(params[:id])
       redirect_to root_path
+      
     else
       redirect_to root_path
     end
