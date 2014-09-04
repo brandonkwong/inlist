@@ -2,6 +2,43 @@
 
 <br>
 
+<div data-ng-if="tagQuery.name != ''">
+<!-- Tag Query Results -->
+    <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
+
+    <h3>#{{tag.name}}</h3>
+
+        <div class="row">
+        <div data-ng-repeat="item in tag.items">
+
+            
+                <div class="col-md-3">
+                    <strong>{{item.title}}</strong>
+                    <!-- <div data-ng-repeat="tag in item.tags">#{{tag}}</div> -->
+                    <br><br>
+                    {{item.description}}
+                    <br><br>
+                    <img data-ng-src="{{item.image}}">
+                </div>
+            
+
+        </div> <!-- end items -->
+        </div>
+        <hr>
+
+    </div> <!-- end tags -->
+
+    <br>
+
+</div>
+
+
+
+
+
+
+
+<div data-ng-if="tagQuery.name == ''">
 <!-- Collection -->
 <% @items.each do |i| %>
 
@@ -53,3 +90,4 @@
     <% end %>
 
 <% end %>
+</div>

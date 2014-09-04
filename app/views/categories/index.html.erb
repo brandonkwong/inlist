@@ -1,6 +1,16 @@
-<h1>Categories index</h1>
+<h1>new category</h1>
+
+<%= form_for :category do |c| %>
+<%= c.text_field :name, placeholder: 'name your category' %>
+
+<%= c.submit 'make category', class: 'btn btn-default'%>
+<% end %>
+
+<br>
+
+<h1>all Categories </h1>
 
 <% @category.each do |c| %>
-<%= c.name %> 
+<%= c.name %> <br>
 <% end %>
 
