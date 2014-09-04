@@ -11,4 +11,9 @@ class StaticController < ApplicationController
     end
   end
 
+  def new
+    @item = MetaInspector.new(params[:url])
+    @tag = Tag.new
+  end
+
 end
