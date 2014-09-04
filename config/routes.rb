@@ -10,7 +10,7 @@ Inlist::Application.routes.draw do
     resources :comments
   end
 
-  get 'items/' => 'items#index'
+  get 'temp/items' => 'items#list'
 
   resources :tags
 

@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def list
     @items = Item.all
+    @comment = Comment.new
   end
   
   def new 
