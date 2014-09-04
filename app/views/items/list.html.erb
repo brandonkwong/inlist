@@ -26,7 +26,7 @@
         <%= image_tag i.image, class: 'image-test' %>
 
         <br><br>
-
+        
         <!-- Comments -->
         <% i.comments.each do |c| %>
             <strong><%= c.user.username %></strong>:
@@ -40,6 +40,8 @@
             <%= f.text_area :comment, placeholder: 'comment goes here' %>
             <%= f.submit %>
         <% end %>
+
+        
 
 
         <br><br>

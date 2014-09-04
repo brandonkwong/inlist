@@ -13,7 +13,10 @@ Inlist::Application.routes.draw do
     resources :comments
   end
   resources :tags, except: :index
-  resources :categories
+  
+  resources :categories, shallow: true do
+    resources :items
+  end
 
   # Custom Routes
   get 'welcome/' => 'users#new'
