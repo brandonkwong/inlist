@@ -29,6 +29,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+  @category = Category.find(params[:id])
+  @comment = Comment.new
+  end
+
 
   # def update
   #   @category = Category.find(params[:id])
