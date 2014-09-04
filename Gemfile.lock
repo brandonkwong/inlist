@@ -57,8 +57,6 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
-    font-awesome-sass (4.2.0)
-      sass (~> 3.2)
     hike (1.2.3)
     i18n (0.6.11)
     jquery-rails (3.1.2)
@@ -163,7 +161,6 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
-  font-awesome-sass
   jquery-rails
   metainspector
   paperclip

@@ -1,53 +1,32 @@
-<h1>static#index</h1>
-
-<br>
-
 <div data-ng-if="tagQuery.name != ''">
-<!-- Tag Query Results -->
+    <!-- Tag Query Results -->
     <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
+        <h1>#{{tag.name}}</h1>
+        <div class="row" data-ng-repeat="item in (tag.items.length/4 | array)">
+            <div class="col-md-3" data-ng-repeat="item in tag.items.slice(4*$index, 4*$index + 4)">
+                <br>
+                <strong>{{item.title}}</strong>
+                <br><br>
 
-    <h3>#{{tag.name}}</h3>
+                <div data-ng-repeat="itemTag in item.tags" style="display: inline;"> <!-- give it a class for display: inline; -->
+                    #{{itemTag.name}}
+                </div> <!-- end item tags -->
 
-        <div class="row">
-            <div data-ng-repeat="item in tag.items" data-ng-model="row">
-
-
-                <%# if tag.items.indexOf(item) == 0 %>
-                <!-- asdf -->
-                <%# end %>
-                
-                    <div class="col-md-3">
-                        <strong>{{item.title}}</strong>
-                        <br><br>
-
-                        <div data-ng-repeat="itemTag in item.tags" style="display: inline;">
-                            #{{itemTag.name}}
-                        </div> <!-- end item tags -->
-
-                        <br><br>
-                        {{item.description}}
-                        <br><br>
-                        <img data-ng-src="{{item.image}}">
-                    </div>
-                
-
-            </div> <!-- end items -->
-        </div> <!-- end row -->
+                <br><br>
+                {{item.description}}
+                <br><br>
+                <img data-ng-src="{{item.image}}" class="image-test">
+            </div> <!-- end columns -->
+        </div> <!-- end rows -->
+        <br>
         <hr>
-
-    </div> <!-- end tags -->
-
-    <br>
-
+    </div> <!-- end tag query -->
 </div>
 
 
-
-
-
-
-
 <div data-ng-if="tagQuery.name == ''">
+<h1>Collection</h1>
+<br>
 <!-- Collection -->
 <% @items.each do |i| %>
 
@@ -95,7 +74,6 @@
     <!-- Collection Row End -->
     <% if (@items.index(i)+1) % 4 == 0 %>
         </div>
-        <hr>
     <% end %>
 
 <% end %>
