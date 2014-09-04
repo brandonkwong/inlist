@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     @has_navbar = true
     @user_login = User.new
     @is_login = true
+    @categories = current_user.categories.all
   end
 
   # Default for Active Model Serializers
