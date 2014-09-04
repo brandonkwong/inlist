@@ -1,16 +1,21 @@
 <h1>new category</h1>
 
 <%= form_for :category do |c| %>
-<%= c.text_field :name, placeholder: 'name your category' %>
+<%= c.text_field :name, placeholder: 'Add a Category' %>
 
-<%= c.submit 'make category', class: 'btn btn-default'%>
+<%= c.submit 'Create Category', class: 'btn btn-default'%>
+
 <% end %>
+
 
 <br>
 
 <h1>all Categories </h1>
 
-<% @category.each do |c| %>
-<%= c.name %> <br>
+<% @categories.each do |c| %>
+<%= c.name %><br>
+<%= button_to "X", category_path(c.id), method: :delete %>
+
 <% end %>
+
 

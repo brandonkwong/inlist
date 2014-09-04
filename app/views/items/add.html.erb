@@ -13,8 +13,11 @@ Image: <strong>(NOTE: item does not save if no image is present)</strong>
     <%= fields_for @tag do |ff| %>
         <% ff.text_field :name, placeholder: 'Tags' %>
     <% end %>
-
-    <%#= f.select(:category_id, @category_options) %> 
+    <% if current_user.categories.exists? %>
+    <%= fields_for @item_category do |ff| %>
+	    <%= ff.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
+    <% end %>
+    <% end %>
     
     <%= hidden_field(:item, :title) %>
     <%= hidden_field(:item, :description) %>

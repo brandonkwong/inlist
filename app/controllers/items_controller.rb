@@ -24,7 +24,8 @@ class ItemsController < ApplicationController
   def add
     @item = MetaInspector.new(params[:url])
     @tag = Tag.new
-    @category_options = current_user.categories.all.sort_by{ |alpha| alpha.name.downcase }.map{ |g| [ g.name, g.id ] }
+    @item_category = Item.new
+    @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
   end
   
   def new 
@@ -90,7 +91,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :image, :url)
+    params.require(:item).permit(:title, :description, :image, :url, :category_id)
   end
 
   def tag_params

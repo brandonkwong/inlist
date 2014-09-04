@@ -3,8 +3,7 @@ class CategoriesController < ApplicationController
 
 
   def index
-    @category = Category.all
-    @users = User.all
+    @categories = current_user.categories.all
   end
   
   
@@ -40,11 +39,10 @@ class CategoriesController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   @category = Category.find(params[:id])
-  #   @category.destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    @category = Category.find(params[:id]).destroy
+    redirect_to categories_path
+  end
 
   private
 

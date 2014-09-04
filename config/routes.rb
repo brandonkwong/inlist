@@ -2,17 +2,17 @@ Inlist::Application.routes.draw do
 
   # APIs
   scope '/api' do
-    resources :users, only: :index, defaults: { format: :json }
-    resources :items, only: :index, defaults: { format: :json }
-    resources :tags, only: :index, defaults: { format: :json }
+    resources :users, defaults: { format: :json }
+    resources :items, defaults: { format: :json }
+    resources :tags, defaults: { format: :json }
   end
 
   # Controllers / Views
-  resources :users, except: :index
-  resources :items, except: :index, shallow: true do
+  resources :users
+  resources :items, shallow: true do
     resources :comments
   end
-  resources :tags, except: :index
+  resources :tags
   
   resources :categories, shallow: true do
     resources :items
