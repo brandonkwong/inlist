@@ -3,6 +3,7 @@ class StaticController < ApplicationController
   before_action :header
 
   def index
+    @static = true
     if current_user
       @items = current_user.items.all
       @comment = Comment.new
