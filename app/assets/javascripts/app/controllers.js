@@ -19,4 +19,5 @@ inlistApp.controller('InListCtrl', ['$scope', 'Tag', function($scope, Tag) {
   //     console.log($scope.images.length);
   //   }
   // };
+
 }]);
