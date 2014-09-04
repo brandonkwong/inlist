@@ -29,7 +29,9 @@
 
         <!-- Comments -->
         <% i.comments.each do |c| %>
+
             <strong><%= c.user.username %></strong>:
+
             <%= c.comment %><br>
         <% end %>
 
