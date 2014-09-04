@@ -23,15 +23,16 @@
                     </div>
                 </form>
             </li>
+            <% if @static %>
             <li>
                 <!-- Search -->
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Find items by tags">
+                        <input type="text" class="form-control" placeholder="Search items by tags" data-ng-model="tagQuery.name">
                     </div>
-                    <button type="submit" class="btn btn-default">Q</button>
                 </form>
             </li>
+            <% end %>
 
             <% if current_user %>
             <!-- Collections Dropdown Button -->
