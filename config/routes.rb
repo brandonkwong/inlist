@@ -1,21 +1,20 @@
 Inlist::Application.routes.draw do
 
-  resource :session, only: [:create, :destroy]
-
-  resources :users, except: [:index, :new]
-
-  get 'welcome/' => 'users#new'
-
-  resources :items, shallow: true do
-    resources :comments
+  scope '/api' do
+    resources :users, defaults: { format: :json }
+    resources :items, defaults: { format: :json }, shallow: true do
+      resources :comments
+    end
+    resources :tags, only: [:index, :destroy], defaults: { format: :json }
   end
-
-  get 'temp/items' => 'items#list'
-
-  resources :tags
 
   resources :categories
 
-  root 'users#index'
+  get 'welcome/' => 'users#new'
+  get 'temp/items' => 'items#list'
+
+  resource :session, only: [:create, :destroy]
+
+  root 'static#index'
 
 end

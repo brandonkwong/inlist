@@ -2,14 +2,21 @@ class UsersController < ApplicationController
 
   before_action :header
 
+  respond_to :json
+
   def index
-    if current_user
-      @items = current_user.items.all
-      @comment = Comment.new
-    else
-      redirect_to welcome_path
-    end
+    @users = User.all
+    respond_with @users, each_serializer: UserSerializer
   end
+
+  # def index
+  #   if current_user
+  #     @items = current_user.items.all
+  #     @comment = Comment.new
+  #   else
+  #     redirect_to welcome_path
+  #   end
+  # end
 
   def show
   end

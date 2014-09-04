@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require inlistApp
+//= require angular
+//= require angular-resource
+//= require angular-rails-templates
 //= require_tree .

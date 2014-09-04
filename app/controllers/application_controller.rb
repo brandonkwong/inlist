@@ -17,5 +17,10 @@ class ApplicationController < ActionController::Base
     @user_login = User.new
     @is_login = true
   end
+
+  # Default for Active Model Serializers
+  def default_serializer_options  
+    { root: false }  
+  end
   
 end
