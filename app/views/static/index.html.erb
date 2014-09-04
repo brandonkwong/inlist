@@ -9,21 +9,26 @@
     <h3>#{{tag.name}}</h3>
 
         <div class="row">
-        <div data-ng-repeat="item in tag.items">
+            <div data-ng-repeat="item in tag.items">
 
-            
-                <div class="col-md-3">
-                    <strong>{{item.title}}</strong>
-                    <!-- <div data-ng-repeat="tag in item.tags">#{{tag}}</div> -->
-                    <br><br>
-                    {{item.description}}
-                    <br><br>
-                    <img data-ng-src="{{item.image}}">
-                </div>
-            
+                
+                    <div class="col-md-3">
+                        <strong>{{item.title}}</strong>
+                        <br><br>
 
-        </div> <!-- end items -->
-        </div>
+                        <div data-ng-repeat="itemTag in item.tags" style="display: inline;">
+                            #{{itemTag.name}}
+                        </div> <!-- end item tags -->
+
+                        <br><br>
+                        {{item.description}}
+                        <br><br>
+                        <img data-ng-src="{{item.image}}">
+                    </div>
+                
+
+            </div> <!-- end items -->
+        </div> <!-- end row -->
         <hr>
 
     </div> <!-- end tags -->
