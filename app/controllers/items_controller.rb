@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     @items = Item.all
     @comment = Comment.new
   end
+
+  def add
+    @item = MetaInspector.new(params[:url])
+    @tag = Tag.new
+  end
   
   def new 
     @item = Item.new

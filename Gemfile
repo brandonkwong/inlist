@@ -17,8 +17,10 @@ gem 'active_model_serializers'
 # MetaInspector
 gem 'metainspector'
 
-# Gemfile
+# Paperclip
 gem 'paperclip'
+
+# Amazon Web Services
 gem 'aws-sdk'
 
 # Use postgresql as the database for Active Record
