@@ -1,3 +1,34 @@
+<%# @item.images.each do |i| %>
+
+    <%#= image_tag(i) %>
+
+<%# end %>
+
+
+<div id="myCarousel" class="carousel" data-interval="false">  
+  <!-- Carousel items -->  
+  <div class="carousel-inner"  style="height: 250px; width: 250px; margin: 0 auto">  
+    <div class="active item">Please Select an Image</div>
+
+    <% @item.images.each do |i| %>
+
+    <div class="item">
+        <%= image_tag(i) %>
+    </div>
+
+    <% end %>
+
+</div>  
+  <!-- Carousel nav -->  
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>  
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>  
+</div>
+
+
+
+
+
+
 <h3><%= @item.title %></h3>
 
 Description: <%= @item.description %><br><br>
