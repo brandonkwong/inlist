@@ -8,13 +8,8 @@ class ItemsController < ApplicationController
     @items = Item.all
     respond_with @items, each_serializer: ItemSerializer
   end
-  
-  # def index
-  #   @item = MetaInspector.new(params[:url])
 
-  #   @tag = Tag.new
-  # end
-
+  # temp/items shows all items for testing
   def list
     @items = Item.all
     @comment = Comment.new
@@ -78,14 +73,6 @@ class ItemsController < ApplicationController
     # Destroy Item
     @item.destroy
     redirect_to root_path
-  end
-
-  def taggings
-    render json: Tag.find_by(name: params[:tag])
-  end
-
-  def nothing
-    render nothing: true
   end
 
   private

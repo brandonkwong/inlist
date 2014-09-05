@@ -1,13 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :header
 
-
   def index
     @categories = current_user.categories.all
   end
   
-  
-
   def create
     # @user = User.find(params[:user_id])
     @category = current_user.categories.new(category_params)
@@ -18,7 +15,6 @@ class CategoriesController < ApplicationController
       render 'users/index'
     end
   end
-
 
   def edit
     if current_user == Category.find(params[:id]).user
@@ -33,7 +29,6 @@ class CategoriesController < ApplicationController
   @category = Category.find(params[:id])
   @comment = Comment.new
   end
-
 
   # def update
   #   @category = Category.find(params[:id])
@@ -56,5 +51,3 @@ class CategoriesController < ApplicationController
   end
   
 end
-
-    
