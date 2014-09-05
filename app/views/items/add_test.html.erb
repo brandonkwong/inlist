@@ -1,104 +1,51 @@
-<h1>items#add_test</h1>
+<div class="row">
 
-<br>
-<br>
+    <div class="col-md-5">
 
-<!-- OG:IMAGE AVAILABLE -->
-<% if @item.image %>
-    
-    <!-- FASTIMAGE AVAILABLE for OG:IMAGE -->
-    <% if FastImage.size(@item.image) %>
+        <h1><%= @meta.title %></h1>
 
-        <!-- OG:IMAGE >= 150px -->
-        <% if FastImage.size(@item.image)[0] >= 150 && FastImage.size(@item.image)[1] >= 150  %>
+        <%= @meta.description %>
 
-            <h1>OG:IMAGE- SIZE IS GOOD</h1>
-            <%= image_tag @item.image %><br>
+        <br><br>
 
-        <!-- OG:IMAGE < 150px -->
-        <% else %>
+        <%= form_for @item do |f| %>
 
-            <h1>OG:IMAGE - SIZE IS TOO SMALL</h1>
-            <!-- ARRAY OF IMAGES -->
-            <% @item.images.each do |i| %>
-                <!-- FASTIMAGE AVAILABLE -->
-                <% if FastImage.size(i) %>
-                    <!-- ONLY IMAGES > 150px -->
-                    <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
-                        <%= image_tag i %>
-                    <% end %>
-                <% end %>   
+            <%= fields_for @tag do |ff| %>
+                <% ff.text_field :name, placeholder: 'Tags', class: 'form-control' %>
             <% end %>
+
+            <% if current_user.categories.exists? %>
+                <%= f.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
+            <% end %>
+
+            <%= f.hidden_field :title, value: @meta.title %>
+            <%= f.hidden_field :description, value: @meta.description %>
+            <%= f.hidden_field :url, value: @meta.url %>
+
+            <!-- Update to have user be able to select from 4 images -->
+            <%= f.hidden_field :image, value: @item_image.first %>
+
+            <br>
+
+            <%= f.submit 'Save Item', class: 'btn btn-primary' %>
 
         <% end %>
 
-    <!-- FASTIMAGE UNAVAILABLE for OG:IMAGE -->
-    <% else %>
+    </div>
 
-        <!-- PUSH THIS IMAGE TO ITEM ARRAY -->
-        <!-- <h1>OG:IMAGE - original</h1> -->
-        <%#= image_tag @item.image %>
+    <div class="col-md-7">
 
-        <!-- ARRAY OF IMAGES -->
-        <% @item.images.each do |i| %>
-            <!-- FASTIMAGE AVAILABLE -->
-            <% if FastImage.size(i) %>
-                <!-- ONLY IMAGES > 150px -->
-                <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
-                    <%= image_tag i %>
-                <% end %>
+        <br>
+
+        <% @item_image.each do |i| %>
+            <!-- Update to have user be able to select from 4 images -->
+            <% if @item_image.index(i) < 1 %>
+                <%= image_tag i, class: 'item-image' %>
             <% end %>
         <% end %>
 
-    <% end %>
+    </div>
 
-<!-- OG:IMAGE UNAVAILABLE -->
-<% else %>
+</div>
 
-    <h1>No OG</h1>
-
-    <!-- ARRAY OF IMAGES -->
-    <% @item.images.each do |i| %>
-        <!-- IMAGE URL > 350 CHARS -->
-        <% if i.size > 350 %>
-            <%= image_tag i %><br>
-        <% end %>
-    <% end %>
-
-<% end %>
-
-
-
-
-
-<h3><%= @item.title %></h3>
-
-Description: <%= @item.description %><br><br>
-URL: <%= @item.url %><br><br>
-Image: <strong>(NOTE: item does not save if no image is present)</strong>
-
-
-<br>
-
-<%= form_for :item do |f| %>
-
-<%= fields_for @tag do |ff| %>
-<% ff.text_field :name, placeholder: 'Tags' %>
-<% end %>
-<% if current_user.categories.exists? %>
-<%= fields_for @item_category do |ff| %>
-<%= ff.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
-<% end %>
-<% end %>
-
-<%= hidden_field(:item, :title) %>
-<%= hidden_field(:item, :description) %>
-<%= hidden_field(:item, :url) %>
-<%= hidden_field(:item, :image) %>
-
-<%= f.submit "Save Item" %>
-<% end %>
-
-<br>
-<br>
 <br>
