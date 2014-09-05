@@ -35,6 +35,15 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      redirect_to root_path
+    else
+      # redirect_to root_path
+    end
+  end
+
   def create
     # Create Item
     @item = current_user.items.new(item_params)
