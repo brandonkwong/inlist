@@ -119,6 +119,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      redirect_to root_path
+    else
+      # redirect_to root_path
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     # Before item destroy,
