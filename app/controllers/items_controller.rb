@@ -22,6 +22,14 @@ class ItemsController < ApplicationController
     @item_category = Item.new
     @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
   end
+
+  # TEST SCRAPER
+  def add_test
+    @item = MetaInspector.new(params[:url])
+    @tag = Tag.new
+    @item_category = Item.new
+    @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
+  end
   
   def new 
     @item = Item.new

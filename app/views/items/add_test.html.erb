@@ -1,0 +1,136 @@
+<h1>items#add_test</h1>
+
+<br>
+<br>
+
+<!-- if og:image is available -->
+<% if @item.image %>
+    
+    <!-- if FastImage is available -->
+    <% if FastImage.size(@item.image) %>
+
+        <!-- if og:image at least 150px -->
+        <% if FastImage.size(@item.image)[0] >= 150 && FastImage.size(@item.image)[1] >= 150  %>
+
+            <h1>OG:IMAGE - sizing</h1>
+
+            <h4>Testing</h4>
+            Width: <%= FastImage.size(@item.image)[0] %><br>
+            Height: <%= FastImage.size(@item.image)[1] %><br>
+            Size: <%= @item.image.size %><br>
+            
+            <%= image_tag @item.image %><br>
+
+        <!-- if smaller than 150px -->
+        <% else %>
+            
+            <h1>OG:IMAGE TOO SMALL</h1>
+
+            <!-- loop through array of images -->
+            <% @item.images.each do |i| %>
+
+           
+                <!-- if FastImage is available -->
+                <% if FastImage.size(i) %>
+                    <!-- if image at least 150px -->
+                    <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
+                        Width: <%= FastImage.size(i)[0] %><br>
+                        Height: <%= FastImage.size(i)[1] %><br>
+                        Size: <%= i.size %><br>
+                        <%= image_tag i %>
+                    <% end %>
+                <% end %>
+                    
+
+
+            <% end %> <!-- end item loop -->
+
+        <% end %> <!-- end if @item.image >= 150 -->
+
+    <% else %>
+
+        <h1>OG:IMAGE - original</h1>
+
+        <%= image_tag @item.image %>
+
+
+        <!-- loop through array of images -->
+            <% @item.images.each do |i| %>
+
+           
+                <!-- if FastImage is available -->
+                <% if FastImage.size(i) %>
+                    <!-- if image at least 150px -->
+                    <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
+                        Width: <%= FastImage.size(i)[0] %><br>
+                        Height: <%= FastImage.size(i)[1] %><br>
+                        Size: <%= i.size %><br>
+                        <%= image_tag i %>
+                    <% end %>
+                <% end %>
+                    
+
+
+            <% end %> <!-- end item loop -->
+
+
+        <!-- NOTE: -->
+        <!-- check if @item.image breaks -->
+
+    <% end %> <!-- end if FastImage is available -->
+
+<!-- else if og:image is not available -->
+<% else %>
+
+<h1>N OG</h1>
+
+    <!-- loop through array of images -->
+    <% @item.images.each do |i| %>
+
+
+        <!-- if image url has more than 350 chars -->
+        <% if i.size > 350 %>
+            <%= i.size %>
+            <%= image_tag i %><br>
+        <% end %> <!-- end if image url less than 350 chars -->
+
+    <% end %> <!-- end item loop -->
+
+
+<% end %> <!-- end if og:image is not available -->
+
+
+
+
+
+<h3><%= @item.title %></h3>
+
+Description: <%= @item.description %><br><br>
+URL: <%= @item.url %><br><br>
+Image: <strong>(NOTE: item does not save if no image is present)</strong>
+
+
+<br>
+
+<%= form_for :item do |f| %>
+
+<%= fields_for @tag do |ff| %>
+<% ff.text_field :name, placeholder: 'Tags' %>
+<% end %>
+<% if current_user.categories.exists? %>
+<%= fields_for @item_category do |ff| %>
+<%= ff.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
+<% end %>
+<% end %>
+
+<%= hidden_field(:item, :title) %>
+<%= hidden_field(:item, :description) %>
+<%= hidden_field(:item, :url) %>
+<%= hidden_field(:item, :image) %>
+
+<%= f.submit "Save Item" %>
+<% end %>
+
+<br>
+<br>
+<br>
