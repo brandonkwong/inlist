@@ -25,29 +25,39 @@
         <br><br>
 
         <!-- Comments -->
-    <div class="main-area" style="border: 2px solid grey">
+    <div class="main-area">
         <% i.comments.each do |c| %>
             <strong><%= c.user.username %></strong>:
-            <%= c.comment %><br>
-            <%= link_to "x", comment_path(c.id), method: :delete %> <br>
+            <%= c.comment %>
+            
+                <%= link_to comment_path(c.id), method: :delete do %>
+                    <%= fa_icon 'times', class: "times_icon" %>
+                <% end %><br>
+                
         <% end %>
     </div>
+
         <br><br>
 
         <!-- Comment Form -->
         
         <%= form_for [i, @comment] do |f| %>
-        <%= f.text_area :comment, placeholder: 'comment goes here', class: 'form-control' %>
-
-         <button type="submit" class="btn btn-primary">Submit</button>
+            <%= f.text_area :comment, placeholder: 'comment goes here', class: 'form-control' %>
+            <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
 
 
         <br><br>
 
-        
-        <%= button_to "Remove This Item", item_path(i.id), method: :delete, class: "btn btn-danger" %>
+    
 
+        <% if current_user == i.user %>
+            <%= button_to "Remove This Item", item_path(i.id), method: :delete, class: "btn btn-danger" %>
+
+            <button type="button" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#item-edit-<%= i.id %>">Edit This Item</button>
+        <% end %>
+
+    
 
       </div>
     </div>
