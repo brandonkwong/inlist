@@ -1,58 +1,55 @@
-<!-- Modals -->
-<%= render 'partials/item' %>
 
-<div data-ng-if="tagQuery.name != ''">
-    <!-- Tag Query Results -->
-    <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
-        <h1>#{{tag.name}}</h1>
-        <div class="row" data-ng-repeat="item in (tag.items.length/4 | row)">
-            <div class="col-md-3" data-ng-repeat="item in tag.items.slice(4*$index, 4*$index + 4)">
-                <br>
-                <strong>{{item.title}}</strong>
-                <br><br>
-
-                <div data-ng-repeat="itemTag in item.tags" style="display: inline;"> <!-- give it a class for display: inline; -->
-                    #{{itemTag.name}}
-                </div> <!-- end item tags -->
-
-                <br><br>
-                {{item.description}}
-                <br><br>
-                <img data-ng-src="{{item.image}}" class="item-image">
-            </div> <!-- end columns -->
-        </div> <!-- end rows -->
-        <br>
-        <hr>
-    </div> <!-- end tag query -->
-</div>
-
-
-<div data-ng-if="tagQuery.name == ''">
-<h1><%= @user.username %>'s Collection</h1>
-<br>
-<!-- Collection -->
-<% @items.each do |i| %>
+<!-- test -->
+<% @users.each do |u| %>
+<%= u.username %>
+    <!-- Collection -->
+<% u.items.each do |i| %>
 
     <!-- Collection Row -->
-    <% if @items.index(i) == 0 || (@items.index(i)+1) % 4 == 0 %>
+    <% if u.items.index(i) == 0 || (u.items.index(i)+1) % 4 == 0 %>
        <div class="row">
     <% end %>
 
     <!-- Items -->
     <div class="col-md-3">
+        <strong><%= i.title %></strong>
 
-        <div data-toggle="modal" data-target="#item-<%= i.id %>">
-            <%= image_tag i.image, class: 'item-image' %>
-        </div>
+        <br><br>
+
+        <% i.tags.each do |t| %>
+            #<%= t.name %>
+        <% end %>
+
+        <br><br>
+
+        <%= i.description %><br><br>
+        <%= image_tag i.image, class: 'image-test' %>
+
+        <br><br>
+        
+        <!-- Comments -->
+        <% i.comments.each do |c| %>
+            <strong><%= c.user.username %></strong>:
+            <%= c.comment %><br>
+        <% end %>
+
+        <br><br>
+
+ 
+        
+
 
         <br><br>
 
     </div>
 
     <!-- Collection Row End -->
-    <% if (@items.index(i)+1) % 4 == 0 %>
+    <% if (u.items.index(i)+1) % 4 == 0 %>
         </div>
+        <hr>
     <% end %>
 
 <% end %>
-</div>
+<% end %>
+<!-- test -->
+<!-- Modals -->
