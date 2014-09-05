@@ -17,6 +17,9 @@ gem 'active_model_serializers'
 # MetaInspector
 gem 'metainspector'
 
+# FastImage
+gem 'fastimage'
+
 # Paperclip
 gem 'paperclip'
 
