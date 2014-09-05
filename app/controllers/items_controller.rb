@@ -23,26 +23,68 @@ class ItemsController < ApplicationController
     @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
   end
 
-  # TEST SCRAPER
+  # TEST SCRAPER (replace with def new)
   def add_test
-    @item = MetaInspector.new(params[:url])
-    @tag = Tag.new
-    @item_category = Item.new
-    @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
-  end
-  
-  def new 
+    @meta = MetaInspector.new(params[:url])
     @item = Item.new
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    if @item.update_attributes(item_params)
-      redirect_to root_path
+    @tag = Tag.new
+    # @item_category = Item.new
+    @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
+  
+    # ITEM IMAGE ARRAY
+    @item_image = [];
+    # OG:IMAGE AVAILABLE
+    if @meta.image
+      # FASTIMAGE AVAILABLE FOR OG:IMAGE
+      if FastImage.size(@meta.image)
+        # OG:IMAGE >= 150px
+        if FastImage.size(@meta.image)[0] >= 150 && FastImage.size(@meta.image)[1] >= 150
+          # PUSH OG:IMAGE into ITEM IMAGE ARRAY
+          @item_image << @meta.image
+        # OG:IMAGE < 150px
+        else
+          # ARRAY OF IMAGES
+          @meta.images.each do |i|
+            # FASTIMAGE AVAILABLE
+            if FastImage.size(i)
+              # ONLY IMAGES > 150px
+              if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150
+                # PUSH IMAGES > 150px into ITEM IMAGE ARRAY
+                @item_image << i
+              end
+            end   
+          end
+        end
+      #FASTIMAGE UNAVAILABLE for OG:IMAGE
+      else
+        # ARRAY OF IMAGES
+        @meta.images.each do |i|
+          # FASTIMAGE AVAILABLE
+          if FastImage.size(i)
+            # ONLY IMAGES > 150px
+            if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150
+              # PUSH IMAGES > 150px into ITEM IMAGE ARRAY
+              @item_image << i
+            end
+          end
+        end
+      end
+    # OG:IMAGE UNAVAILABLE
     else
-      # redirect_to root_path
+      # ARRAY OF IMAGES
+      @meta.images.each do |i|
+        # IMAGE URL > 350 CHARS
+        if i.size > 350
+          # PUSH IMAGE URL > 350 CHARS into ITEM IMAGE ARRAY
+          @item_image << i
+        end
+      end
     end
   end
+
+  # def new 
+  #   @item = Item.new
+  # end
 
   def create
     # Create Item
@@ -77,6 +119,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      redirect_to root_path
+    else
+      # redirect_to root_path
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     # Before item destroy,
@@ -95,7 +146,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :image, :url, :category_id)
+    params.require(:item).permit(:title, :description, :image, :url)
   end
 
   def tag_params
