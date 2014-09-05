@@ -1,0 +1,38 @@
+<% @items.each do |i| %>
+<div class="modal fade" id="item-edit-<%= i.id %>" tabindex="-1" role="dialog" aria-labelledby="label-<%= i.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="label-<%= i.id %>">EDIT ITEM TITLE?</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for i do |f| %>
+            <strong><%= f.text_field :title %></strong>
+        
+        
+            <br><br>
+
+            <% i.tags.each do |t| %>
+                #<%= t.name %>
+            <% end %>
+
+            <br><br>
+
+            <%= i.description %><br><br>
+            <%= image_tag i.image, class: 'image-test' %>
+
+            <br><br>
+
+
+        <% end %>
+
+    
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
