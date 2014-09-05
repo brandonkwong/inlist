@@ -25,22 +25,28 @@
         <br><br>
 
         <!-- Comments -->
+    <div class="main-area" style="border: 2px solid grey">
         <% i.comments.each do |c| %>
             <strong><%= c.user.username %></strong>:
             <%= c.comment %><br>
+            <%= link_to "x", comment_path(c.id), method: :delete %> <br>
         <% end %>
-
+    </div>
         <br><br>
 
         <!-- Comment Form -->
+        
         <%= form_for [i, @comment] do |f| %>
-            <%= f.text_area :comment, placeholder: 'comment goes here' %>
-            <%= f.submit %>
+        <%= f.text_area :comment, placeholder: 'comment goes here', class: 'form-control' %>
+
+         <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
 
 
         <br><br>
 
+        
+        <%= button_to "Remove This Item", item_path(i.id), method: :delete, class: "btn btn-danger" %>
 
 
       </div>

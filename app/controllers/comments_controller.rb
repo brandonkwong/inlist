@@ -6,6 +6,13 @@ class CommentsController < ApplicationController
     @items = Item.all
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    # Destroy Item
+    @comment.destroy
+    redirect_to root_path
+  end
+
   def create
     @item = Item.find(params[:item_id])
     @comment = current_user.comments.new(comment_params)
