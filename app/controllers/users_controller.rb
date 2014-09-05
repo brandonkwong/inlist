@@ -9,16 +9,10 @@ class UsersController < ApplicationController
     respond_with @users, each_serializer: UserSerializer
   end
 
-  # def index
-  #   if current_user
-  #     @items = current_user.items.all
-  #     @comment = Comment.new
-  #   else
-  #     redirect_to welcome_path
-  #   end
-  # end
-
   def show
+    @user = User.find(params[:id])
+    @items = @user.items.all
+    @comment = Comment.new
   end
 
   def new
@@ -36,8 +30,6 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
-  
 
   def edit
     if current_user == User.find(params[:id])
@@ -62,8 +54,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     redirect_to welcome_path
   end
-
-
 
   private
 

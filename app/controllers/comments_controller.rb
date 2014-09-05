@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     @items = Item.all
   end
 
-
   def create
     @item = Item.find(params[:item_id])
     @comment = current_user.comments.new(comment_params)
