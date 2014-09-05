@@ -8,7 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require font-awesome
  *= require_self
  *= require_tree .
  */
@@ -16,5 +15,15 @@
 @import 'bootstrap';
 
 .image-test {
-  width: 100%;
+  max-width: 100%;
+}
+
+.test1 {
+  background: pink;
+  border: 1px solid cyan;
+}
+
+.test2 {
+  background: yellow;
+  border: 1px solid red;
 }
