@@ -1,3 +1,6 @@
+<!-- Modals -->
+<%= render 'partials/item' %>
+
 <div data-ng-if="tagQuery.name != ''">
     <!-- Tag Query Results -->
     <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
@@ -15,7 +18,7 @@
                 <br><br>
                 {{item.description}}
                 <br><br>
-                <img data-ng-src="{{item.image}}" class="image-test">
+                <img data-ng-src="{{item.image}}" class="item-image">
             </div> <!-- end columns -->
         </div> <!-- end rows -->
         <br>
@@ -48,7 +51,9 @@
         <br><br>
 
         <%= i.description %><br><br>
-        <%= image_tag i.image, class: 'image-test' %>
+        <div data-toggle="modal" data-target="#item-<%= i.id %>">
+            <%= image_tag i.image, class: 'item-image' %>
+        </div>
 
         <br><br>
 
