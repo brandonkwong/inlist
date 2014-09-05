@@ -20,12 +20,6 @@ gem 'metainspector'
 # FastImage
 gem 'fastimage'
 
-# Paperclip
-gem 'paperclip'
-
-# Amazon Web Services
-gem 'aws-sdk'
-
 # Use postgresql as the database for Active Record
 gem 'pg'
 

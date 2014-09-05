@@ -3,101 +3,69 @@
 <br>
 <br>
 
-<!-- if og:image is available -->
+<!-- OG:IMAGE AVAILABLE -->
 <% if @item.image %>
     
-    <!-- if FastImage is available -->
+    <!-- FASTIMAGE AVAILABLE for OG:IMAGE -->
     <% if FastImage.size(@item.image) %>
 
-        <!-- if og:image at least 150px -->
+        <!-- OG:IMAGE >= 150px -->
         <% if FastImage.size(@item.image)[0] >= 150 && FastImage.size(@item.image)[1] >= 150  %>
 
-            <h1>OG:IMAGE - sizing</h1>
-
-            <h4>Testing</h4>
-            Width: <%= FastImage.size(@item.image)[0] %><br>
-            Height: <%= FastImage.size(@item.image)[1] %><br>
-            Size: <%= @item.image.size %><br>
-            
+            <h1>OG:IMAGE- SIZE IS GOOD</h1>
             <%= image_tag @item.image %><br>
 
-        <!-- if smaller than 150px -->
+        <!-- OG:IMAGE < 150px -->
         <% else %>
-            
-            <h1>OG:IMAGE TOO SMALL</h1>
 
-            <!-- loop through array of images -->
+            <h1>OG:IMAGE - SIZE IS TOO SMALL</h1>
+            <!-- ARRAY OF IMAGES -->
             <% @item.images.each do |i| %>
-
-           
-                <!-- if FastImage is available -->
+                <!-- FASTIMAGE AVAILABLE -->
                 <% if FastImage.size(i) %>
-                    <!-- if image at least 150px -->
+                    <!-- ONLY IMAGES > 150px -->
                     <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
-                        Width: <%= FastImage.size(i)[0] %><br>
-                        Height: <%= FastImage.size(i)[1] %><br>
-                        Size: <%= i.size %><br>
                         <%= image_tag i %>
                     <% end %>
-                <% end %>
-                    
+                <% end %>   
+            <% end %>
 
+        <% end %>
 
-            <% end %> <!-- end item loop -->
-
-        <% end %> <!-- end if @item.image >= 150 -->
-
+    <!-- FASTIMAGE UNAVAILABLE for OG:IMAGE -->
     <% else %>
 
-        <h1>OG:IMAGE - original</h1>
+        <!-- PUSH THIS IMAGE TO ITEM ARRAY -->
+        <!-- <h1>OG:IMAGE - original</h1> -->
+        <%#= image_tag @item.image %>
 
-        <%= image_tag @item.image %>
-
-
-        <!-- loop through array of images -->
-            <% @item.images.each do |i| %>
-
-           
-                <!-- if FastImage is available -->
-                <% if FastImage.size(i) %>
-                    <!-- if image at least 150px -->
-                    <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
-                        Width: <%= FastImage.size(i)[0] %><br>
-                        Height: <%= FastImage.size(i)[1] %><br>
-                        Size: <%= i.size %><br>
-                        <%= image_tag i %>
-                    <% end %>
+        <!-- ARRAY OF IMAGES -->
+        <% @item.images.each do |i| %>
+            <!-- FASTIMAGE AVAILABLE -->
+            <% if FastImage.size(i) %>
+                <!-- ONLY IMAGES > 150px -->
+                <% if FastImage.size(i)[0] >= 150 && FastImage.size(i)[1] >= 150 %>
+                    <%= image_tag i %>
                 <% end %>
-                    
+            <% end %>
+        <% end %>
 
+    <% end %>
 
-            <% end %> <!-- end item loop -->
-
-
-        <!-- NOTE: -->
-        <!-- check if @item.image breaks -->
-
-    <% end %> <!-- end if FastImage is available -->
-
-<!-- else if og:image is not available -->
+<!-- OG:IMAGE UNAVAILABLE -->
 <% else %>
 
-<h1>N OG</h1>
+    <h1>No OG</h1>
 
-    <!-- loop through array of images -->
+    <!-- ARRAY OF IMAGES -->
     <% @item.images.each do |i| %>
-
-
-        <!-- if image url has more than 350 chars -->
+        <!-- IMAGE URL > 350 CHARS -->
         <% if i.size > 350 %>
-            <%= i.size %>
             <%= image_tag i %><br>
-        <% end %> <!-- end if image url less than 350 chars -->
+        <% end %>
+    <% end %>
 
-    <% end %> <!-- end item loop -->
-
-
-<% end %> <!-- end if og:image is not available -->
+<% end %>
 
 
 
