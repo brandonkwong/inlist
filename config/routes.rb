@@ -23,6 +23,7 @@ Inlist::Application.routes.draw do
   get 'temp/add' => 'items#add'
   post 'temp/add' => 'items#create'
   get 'temp/items' => 'items#list'
+  get 'users/:id' => 'users#show'
 
   # TEST SCRAPER
   get 'test/add' => 'items#add_test'
