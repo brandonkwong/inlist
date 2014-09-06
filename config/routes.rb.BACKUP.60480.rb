@@ -25,8 +25,15 @@ Inlist::Application.routes.draw do
   get 'temp/items' => 'items#list'
   get 'temp/add' => 'items#add'
   post 'temp/add' => 'items#create'
+<<<<<<< HEAD
   get 'temp/items' => 'items#list'
   get 'users/:id' => 'users#show'
+
+  # TEST SCRAPER
+  get 'test/add' => 'items#add_test'
+  post 'test/add' => 'items#create'
+=======
+>>>>>>> e001c0b10b52201d9abd5e843774db727690aba1
 
   # Session
   resource :session, only: [:create, :destroy]
