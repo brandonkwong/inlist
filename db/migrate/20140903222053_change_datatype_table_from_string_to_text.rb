@@ -6,4 +6,11 @@ class ChangeDatatypeTableFromStringToText < ActiveRecord::Migration
   def down
     change_column :items, :description, :string
   end
+  def up
+    change_column :url, :description, :text, :limit => nil
+  end
+
+  def down
+    change_column :url, :description, :string
+  end
 end
