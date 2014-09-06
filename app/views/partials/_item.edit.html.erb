@@ -9,8 +9,7 @@
       <div class="modal-body">
 
         <%= form_for i do |f| %>
-            <strong><%= f.text_field :title %></strong>
-        
+            <strong><%= f.text_field :title %></strong>      
         
             <br><br>
 
@@ -19,15 +18,17 @@
             <% end %>
 
             <br><br>
-
-            <%= i.description %><br><br>
+            <%= f.text_area :description %>
+            
             <%= image_tag i.image, class: 'image-test' %>
 
             <br><br>
 
+            <%= f.submit "Save Changes", class: "btn btn-primary" %>
 
         <% end %>
-
+            
+        
     
 
 
