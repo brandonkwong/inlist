@@ -25,8 +25,8 @@ Inlist::Application.routes.draw do
   get 'temp/items' => 'items#list'
   get 'temp/add' => 'items#add'
   post 'temp/add' => 'items#create'
-  get 'temp/items' => 'items#list'
   get 'users/:id' => 'users#show'
+
 
   # Session
   resource :session, only: [:create, :destroy]
