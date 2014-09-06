@@ -4,6 +4,7 @@ class StaticController < ApplicationController
 
   def index
     @static = true
+    @tag_items = Item.all
     if current_user
       @items = current_user.items.all
       @comment = Comment.new

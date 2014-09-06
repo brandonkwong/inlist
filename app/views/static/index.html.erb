@@ -2,32 +2,10 @@
 <%= render 'partials/item' %>
 <%= render 'partials/item.edit' %>
 
-<div data-ng-if="tagQuery.name != ''">
-    <!-- Tag Query Results -->
-    <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
-        <h1>#{{tag.name}}</h1>
-        <div class="row" data-ng-repeat="item in (tag.items.length/4 | row)">
-            <div class="col-md-3" data-ng-repeat="item in tag.items.slice(4*$index, 4*$index + 4)">
-                <br>
-                <strong>{{item.title}}</strong>
-                <br><br>
+<!-- Tag Query Results -->
+<%= render 'partials/tag_query' %>
 
-                <div data-ng-repeat="itemTag in item.tags" style="display: inline;"> <!-- give it a class for display: inline; -->
-                    #{{itemTag.name}}
-                </div> <!-- end item tags -->
-
-                <br><br>
-                {{item.description}}
-                <br><br>
-                <img data-ng-src="{{item.image}}" class="item-image">
-            </div> <!-- end columns -->
-        </div> <!-- end rows -->
-        <br>
-        <hr>
-    </div> <!-- end tag query -->
-</div>
-
-
+<!-- Collection -->
 <div data-ng-if="tagQuery.name == ''">
 <h1>Collection</h1>
 <br>
