@@ -16,22 +16,11 @@ class ItemsController < ApplicationController
     @category = Category.new
   end
 
-  def add
-    @item = MetaInspector.new(params[:url])
-    @tag = Tag.new
-    @item_category = Item.new
-    @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
-  end
-
-  # TEST SCRAPER (replace with def new)
-  def add_test
-    @meta = MetaInspector.new(params[:url])
+  def new
     @item = Item.new
     @tag = Tag.new
-    # @item_category = Item.new
+    @meta = MetaInspector.new(params[:url])
     @category_options = current_user.categories.sort_by{ |alpha| alpha.name.downcase }.map { |c| [ c.name, c.id ] }
-  
-    # ITEM IMAGE ARRAY
     @item_image = [];
     # OG:IMAGE AVAILABLE
     if @meta.image
@@ -81,10 +70,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-  # def new 
-  #   @item = Item.new
-  # end
 
   def create
     # Create Item

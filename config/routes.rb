@@ -1,5 +1,4 @@
 Inlist::Application.routes.draw do
-
   # APIs
   scope '/api' do
     resources :users, defaults: { format: :json }
@@ -8,30 +7,28 @@ Inlist::Application.routes.draw do
   end
 
   # Controllers / Views
-  resources :users
+  resources :users, except: :new
   resources :items, shallow: true do
     resources :comments
   end
-  resources :tags
-  
   resources :categories, shallow: true do
     resources :items
   end
 
-  # Custom Routes
+  # test whether this needs to be included
+  resources :tags
+
+  # Welcome / Sign Up
   get 'welcome/' => 'users#new'
+
+  # Note: delete after testing
+  get 'temp/items' => 'items#list'
   get 'temp/add' => 'items#add'
   post 'temp/add' => 'items#create'
-  get 'temp/items' => 'items#list'
-
-  # TEST SCRAPER
-  get 'test/add' => 'items#add_test'
-  post 'test/add' => 'items#create'
 
   # Session
   resource :session, only: [:create, :destroy]
 
   # Root
   root 'static#index'
-
 end
