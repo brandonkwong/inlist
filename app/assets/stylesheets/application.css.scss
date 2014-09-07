@@ -16,19 +16,20 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
-.item-image {
-  cursor: pointer;
-  max-width: 100%;
+.item-box {
+  height: 350px;
+  margin-bottom: 2em;
+  overflow: hidden;
+  width: 100%;
+
+  .item-image {
+    cursor: pointer;
+    max-width: 100%;
+  }
 }
 
-.test1 {
-  background: pink;
-  border: 1px solid cyan;
-}
-
-.test2 {
-  background: yellow;
-  border: 1px solid red;
+.tag {
+  display: inline;
 }
 
 .main-area {

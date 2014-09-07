@@ -5,17 +5,19 @@
         <div class="row" data-ng-repeat="item in (tag.items.length/4 | row)">
             <div class="col-md-3" data-ng-repeat="item in tag.items.slice(4*$index, 4*$index + 4)">
                 <br>
-                <strong>{{item.title}}</strong>
+                <!-- <strong>{{item.title}}</strong>
                 <br><br>
 
-                <div data-ng-repeat="itemTag in item.tags" style="display: inline;"> <!-- give it a class for display: inline; -->
+                <div data-ng-repeat="itemTag in item.tags" class="tag">
                     #{{itemTag.name}}
-                </div> <!-- end item tags -->
+                </div>
 
                 <br><br>
                 {{item.description}}
-                <br><br>
-                <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-test-{{i.id}}" class="item-image">
+                <br><br> -->
+                <div class="item-box">
+                    <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-test-{{i.id}}" class="item-image">
+                </div>
             </div> <!-- end columns -->
         </div> <!-- end rows -->
         <br>
