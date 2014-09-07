@@ -1,19 +1,17 @@
+
 <h1>InList</h1>
 <p>Our tagline goes here.</p>
-<%= form_for @user, html: { role: 'form' } do |f| %>
-    <div class="form-group">
-        <%= f.text_field :username, placeholder: 'Username', class: 'form-control', autofocus: true %>
-        <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
-        <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-        <%= f.password_field :password_confirmation, placeholder: 'Retype Password', class: 'form-control' %>
-    </div>
-    <%= f.submit 'SIGN UP', class: 'btn btn-default' %>
-<% end %>
+
+<!-- button for Signup Modal-->
+<div id="wrap" class="text-center">
+    <br>
+    <button class="btn btn-default btn-outline" data-toggle="modal" data-target="#signup">Signup </button>
+</div>
 
 
-<!-- Login -->
-<div class="login-link">
-    <p>Already have an account?</p>
-    <p><a data-toggle="modal" data-target="#login">Log In</a></p>
+
+<!-- Button for Login Modal -->
+<div id="wrap" class="text-center">
+    <br>
+    <button class="btn btn-default btn-outline" data-toggle="modal" data-target="#login">Log In</button>
 </div>
