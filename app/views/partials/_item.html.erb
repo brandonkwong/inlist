@@ -49,7 +49,7 @@
 
         <br><br>
 
-    
+    <div class="edit_buttons">
 
         <% if current_user == i.user %>
             <%= button_to "Remove This Item", item_path(i.id), method: :delete, class: "btn btn-danger" %>
@@ -58,6 +58,7 @@
         <% end %>
 
     
+    </div>
 
       </div>
     </div>
