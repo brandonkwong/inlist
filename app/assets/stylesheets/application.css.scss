@@ -19,12 +19,14 @@
 
 .welcome {
     background: url(Top_view.jpg) no-repeat center center fixed;
+    left: 0;
     height: 100%;
     width: 100%;
     margin: auto 0;
     position: fixed;
     color: white;
     font-family: 'Droid Serif', serif;
+    text-align: center;
   }
 
 body.modal-open #wrap{
@@ -66,3 +68,9 @@ body.modal-open #wrap{
 .edit_buttons {
   display: -webkit-inline-box;
 }
+
+.welcome_buttons {
+  position: relative;
+  top: 200px;
+}
+
