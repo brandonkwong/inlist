@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # @items = @user.items.all
-    # @comment = Comment.new
+    @comment = Comment.new
   end
 
   def new

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.item_id = @item.id
     if @comment.save
-      redirect_to root_path
+      redirect_to :back
     else
       render 'users/index'
     end

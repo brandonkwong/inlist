@@ -38,7 +38,17 @@
         <% end %>
     </div>
 
+
+
         <br><br>
+
+        <!-- Comment Form -->
+        
+        <%= form_for [i, @comment] do |f| %>
+            <%= f.text_area :comment, placeholder: 'comment goes here', class: 'form-control' %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        <% end %>
+
 
 
    
