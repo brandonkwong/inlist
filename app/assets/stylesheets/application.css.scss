@@ -16,6 +16,7 @@
 @import 'bootstrap';
 @import 'font-awesome';
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
 
 .welcome {
     background: url(Top_view.jpg) no-repeat center center fixed;
@@ -25,7 +26,8 @@
     margin: auto 0;
     position: fixed;
     color: white;
-    font-family: 'Droid Serif', serif;
+    font-family: Droid-Serif, serif;
+    font-size: 15px;
     text-align: center;
   }
 
@@ -69,8 +71,9 @@ body.modal-open #wrap{
   display: -webkit-inline-box;
 }
 
-.welcome_buttons {
+.btn-toolbar {
   position: relative;
   top: 200px;
+  display: inline-flex;
 }
 
