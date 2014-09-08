@@ -1,4 +1,4 @@
-<% @items.each do |i| %>
+<% @category.items.each do |i| %>
 <div class="modal fade" id="item-edit-<%= i.id %>" tabindex="-1" role="dialog" aria-labelledby="label-<%= i.id %>" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -22,12 +22,6 @@
             
             <%= image_tag i.image, class: 'image-test' %>
 
-            <br><br>
-
-            <% if current_user.categories.exists? %>
-                <%= f.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
-            <% end %>
-            
             <br><br>
 
             <%= f.submit "Save Changes", class: "btn btn-primary" %>
