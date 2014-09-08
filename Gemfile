@@ -58,4 +58,4 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 
 # Ruby Version
-ruby "1.9.3"
+ruby "2.1.2"
