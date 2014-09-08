@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140906202747) do
   create_table "items", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "url"
+    t.text     "url"
     t.text     "image"
     t.integer  "user_id"
     t.integer  "category_id"
