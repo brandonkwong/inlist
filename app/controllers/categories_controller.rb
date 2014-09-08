@@ -14,9 +14,9 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.new(category_params)
     # @category.user_id = @user.id
     if @category.save
-      redirect_to categories_path
+      redirect_to category_path(@category.id)
     else
-      render 'users/index'
+      # render 'users/index'
     end
   end
 
