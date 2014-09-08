@@ -7,6 +7,7 @@
         </div>
         <div class="modal-body">
 
+            <!-- change to http://localhost:3000/users/{{item.user.id}} -->
             <strong>Posted by <a href="http://inlist.herokuapp.com/users/{{item.user.id}}">{{item.user.username}}</a></strong>
             <br>
 
@@ -17,6 +18,10 @@
 
             <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-modal-{{item.id}}" class="item-image">
 
+            <br><br>
+
+            <a href="{{item.url}}" target="_blank">View Item</a>
+            
             <br><br>
             {{item.description}}
             <br><br>
