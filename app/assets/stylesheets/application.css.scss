@@ -13,8 +13,11 @@
  *= require_tree .
  */
 
+// Bootstrap
 @import 'bootstrap';
 @import 'font-awesome';
+
+// Fonts
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(http://fonts.googleapis.com/css?family=Yellowtail);
 
@@ -42,7 +45,7 @@ body.modal-open #wrap{
 .modal-backdrop {background: #f7f7f7;}
 
 .item-box {
-  height: 350px;
+  height: 300px;
   margin-bottom: 2em;
   overflow: hidden;
   width: 100%;

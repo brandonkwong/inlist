@@ -1,10 +1,13 @@
+<h1>Account Settings</h1>
+<br>
 <%= form_for @user do |f| %>
-		<%= f.text_field :username, placeholder: 'Username', class: 'form-control', autofocus: true %>
-        <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
-        <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-        <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-        <%= f.password_field :password_confirmation, placeholder: 'Retype Password', class: 'form-control' %> 
-        <%= f.submit "Save Changes" %>
+	<%= f.text_field :username, placeholder: 'Username', class: 'form-control', autofocus: true %>
+    <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+    <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+    <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+    <%= f.password_field :password_confirmation, placeholder: 'Retype Password', class: 'form-control' %>
+    <br>
+    <%= f.submit "Save Changes", class: 'btn btn-primary' %>
 <% end %>
-
+<br>
 <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: "Permanently delete this account?" } %>

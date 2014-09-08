@@ -4,14 +4,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="label-<%= i.id %>">ITEM TITLE?</h4>
+        <h4 class="modal-title" id="label-<%= i.id %>"><%= i.title %></h4>
       </div>
       <div class="modal-body">
 
-        
-        <strong><%= i.title %></strong>
 
-        <br><br>
 
         <% i.tags.each do |t| %>
             #<%= t.name %>
@@ -20,7 +17,9 @@
         <br><br>
 
         <%= i.description %><br><br>
-        <%= button_to("View This Item", i.url) %>
+        <%= link_to 'View This Item', i.url, target: '_blank' %>
+        <br><br>
+
         <%= image_tag i.image, class: 'image-test' %>
 
 

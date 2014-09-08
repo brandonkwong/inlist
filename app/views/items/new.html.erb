@@ -10,6 +10,8 @@
 
         <%= form_for @item do |f| %>
 
+            <%= f.text_area :description, placeholder: 'Description (optional)', class: 'form-control' %>
+
             <%= fields_for @tag do |ff| %>
                 <% ff.text_field :name, placeholder: 'Tags', class: 'form-control' %>
             <% end %>
@@ -19,7 +21,7 @@
             <% end %>
 
             <%= f.hidden_field :title, value: @meta.title %>
-            <%= f.hidden_field :description, value: @meta.description %>
+            <%#= f.hidden_field :description, value: @meta.description %>
             <%= f.hidden_field :url, value: @meta.url %>
 
             <!-- Update to have user be able to select from 4 images -->
