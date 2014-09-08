@@ -50,3 +50,12 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+# gem for static asset serving and logging
+gem 'rails_12factor', group: :production
+
+# Ruby Version
+ruby "2.1.2"
+
+# Unicorn used for Webserver
+gem 'unicorn'
