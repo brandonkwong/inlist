@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  validates_presence_of :title, :description, :url, :image
+  validates_presence_of :title, :url, :image
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings

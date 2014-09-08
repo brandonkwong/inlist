@@ -131,7 +131,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :image, :url)
+    params.require(:item).permit(:title, :description, :image, :url, :category_id)
   end
 
   def tag_params

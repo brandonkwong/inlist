@@ -1,0 +1,28 @@
+<div class="modal fade" id="item-modal-{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="label-{{item.id}}" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="label-{{item.id}}">{{item.title}}</h4>
+        </div>
+        <div class="modal-body">
+
+            <strong>Posted by {{item.user.name}}</strong>
+            <br>
+
+            <div data-ng-repeat="itemTag in item.tags" class="tag">
+                #{{itemTag.name}}
+            </div>
+            <br><br>
+
+            <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-modal-{{item.id}}" class="item-image">
+
+            <br><br>
+            {{item.description}}
+            <br><br>
+
+        
+        </div>
+      </div>
+    </div>
+  </div>

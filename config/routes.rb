@@ -11,9 +11,9 @@ Inlist::Application.routes.draw do
   resources :items, shallow: true do
     resources :comments
   end
-  resources :categories, shallow: true do
-    resources :items
-  end
+  resources :categories #, shallow: true do
+    # resources :items
+  # end
 
   # test whether this needs to be included
   resources :tags

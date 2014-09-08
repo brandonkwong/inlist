@@ -1,26 +1,20 @@
 <div data-ng-if="tagQuery.name != ''">
     <!-- Tag Query Results -->
     <div data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
-        <h1>#{{tag.name}}</h1>
+        <h2>Items with #{{tag.name}}</h2>
+        <br>
         <div class="row" data-ng-repeat="item in (tag.items.length/4 | row)">
             <div class="col-md-3" data-ng-repeat="item in tag.items.slice(4*$index, 4*$index + 4)">
-                <br>
-                <!-- <strong>{{item.title}}</strong>
-                <br><br>
-
-                <div data-ng-repeat="itemTag in item.tags" class="tag">
-                    #{{itemTag.name}}
-                </div>
-
-                <br><br>
-                {{item.description}}
-                <br><br> -->
+                
                 <div class="item-box">
-                    <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-test-{{i.id}}" class="item-image">
+                    <img data-ng-src="{{item.image}}" data-toggle="modal" data-target="#item-modal-{{item.id}}" class="item-image">
                 </div>
+
+                <%= render 'partials/item_modal' %>
+
             </div> <!-- end columns -->
         </div> <!-- end rows -->
-        <br>
-        <hr>
     </div> <!-- end tag query -->
 </div>
+
+
