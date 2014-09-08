@@ -1,13 +1,14 @@
 Inlist::Application.routes.draw do
   # APIs
   scope '/api' do
-    resources :users, defaults: { format: :json }
+    resources :users, only: :index, defaults: { format: :json }
     resources :items, defaults: { format: :json }
     resources :tags, defaults: { format: :json }
   end
 
   # Controllers / Views
   resources :users, except: :new
+  post 'api/users/' => 'users#create'
   resources :items, shallow: true do
     resources :comments
   end
@@ -22,10 +23,10 @@ Inlist::Application.routes.draw do
   get 'welcome/' => 'users#new'
 
   # Note: delete after testing
-  get 'temp/items' => 'items#list'
-  get 'temp/add' => 'items#add'
-  post 'temp/add' => 'items#create'
-  get 'users/:id' => 'users#show'
+  # get 'temp/items' => 'items#list'
+  # get 'temp/add' => 'items#add'
+  # post 'temp/add' => 'items#create'
+  # get 'users/:id' => 'users#show'
 
 
   # Session

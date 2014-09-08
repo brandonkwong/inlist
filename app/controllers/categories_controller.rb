@@ -30,8 +30,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-  @category = Category.find(params[:id])
-  @comment = Comment.new
+    if current_user.id == Category.find(params[:id]).user_id
+      @category = Category.find(params[:id])
+      @comment = Comment.new
+    end
   end
 
   # def update

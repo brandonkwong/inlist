@@ -1,5 +1,14 @@
+<!-- Modals -->
+<%= render 'partials/item_categories' %>
+<%= render 'partials/item_categories.edit' %>
 
+<!-- Tag Query Results -->
+<%= render 'partials/tag_query' %>
 
+<!-- Collection -->
+<div data-ng-if="tagQuery.name == ''">
+<h2>InList / <%= current_user.username %> / <%= @category.name %></h2>
+<br>
 <!-- Collection -->
 <% @category.items.each do |i| %>
 
@@ -10,44 +19,17 @@
 
     <!-- Items -->
     <div class="col-md-3">
-        <strong><%= i.title %></strong>
-
-        <br><br>
-
-        <% i.tags.each do |t| %>
-            #<%= t.name %>
-        <% end %>
-
-        <br><br>
-
-        <%= i.description %><br><br>
-        <%= image_tag i.image, class: 'image-test' %>
-
-        <br><br>
-
-        <!-- Comments -->
-        <% i.comments.each do |c| %>
-            <strong><%= c.user.username %></strong>:
-            <%= c.comment %><br>
-        <% end %>
-
-        <br><br>
-
-        <!-- Comment Form -->
-        <%= form_for [i, @comment] do |f| %>
-            <%= f.text_area :comment, placeholder: 'comment goes here' %>
-            <%= f.submit %>
-        <% end %>
-
-
-        <br><br>
-
+        <div data-toggle="modal" data-target="#item-<%= i.id %>">
+            <div class="item-box">
+                <%= image_tag i.image, class: 'item-image' %>
+            </div>
+        </div>
     </div>
 
     <!-- Collection Row End -->
     <% if (@category.items.index(i)+1) % 4 == 0 %>
         </div>
-        <hr>
     <% end %>
 
 <% end %>
+</div>
