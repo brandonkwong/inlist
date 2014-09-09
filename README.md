@@ -24,7 +24,7 @@ Simply add a link from any url across any website and paste it in the "add item"
 
 ***
 
-[InList Website](http://www.inlist.herokuapp.com) - Rails Version: **4.0.4** - Ruby Version: **2.1.2**
+[InList Website](http://inlist.herokuapp.com) - Rails Version: **4.0.4** - Ruby Version: **2.1.2**
   
   `git clone`
   
