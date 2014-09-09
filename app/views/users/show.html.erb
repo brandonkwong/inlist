@@ -1,49 +1,34 @@
+<!-- Modals -->
+<%= render 'partials/item_user' %>
 
-<!-- show all users -->
-<% @users.each do |u| %>
-<%= u.username %>
-    <!-- Collection -->
-<% u.items.each do |i| %>
+<!-- Tag Query Results -->
+<%= render 'partials/tag_query' %>
+
+<!-- Collection -->
+<div data-ng-if="tagQuery.name == ''">
+<h2>InList / <%= @user.username %></h2>
+<br>
+<!-- Collection -->
+<% @user.items.each do |i| %>
 
     <!-- Collection Row -->
-    <% if u.items.index(i) == 0 || (u.items.index(i)+1) % 4 == 0 %>
+    <% if @user.items.index(i) == 0 || (@user.items.index(i)+1) % 4 == 0 %>
        <div class="row">
     <% end %>
 
     <!-- Items -->
     <div class="col-md-3">
-        <strong><%= i.title %></strong>
-
-        <br><br>
-
-        <% i.tags.each do |t| %>
-            #<%= t.name %>
-        <% end %>
-
-        <br><br>
-
-        <%= i.description %><br><br>
-        <%= image_tag i.image, class: 'image-test' %>
-
-        <br><br>
-        
-        <!-- Comments -->
-        <% i.comments.each do |c| %>
-            <strong><%= c.user.username %></strong>:
-            <%= c.comment %><br>
-        <% end %>
-
-        <br><br>
-        <br><br>
-
+        <div data-toggle="modal" data-target="#item-<%= i.id %>">
+            <div class="item-box">
+                <%= image_tag i.image, class: 'item-image' %>
+            </div>
+        </div>
     </div>
 
     <!-- Collection Row End -->
-    <% if (u.items.index(i)+1) % 4 == 0 %>
+    <% if (@user.items.index(i)+1) % 4 == 0 %>
         </div>
-        <hr>
     <% end %>
 
 <% end %>
-<% end %>
-<!-- Modals -->
+</div>

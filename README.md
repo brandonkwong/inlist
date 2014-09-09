@@ -1,6 +1,5 @@
 # WDI LA: Project 3- InList
 
-***
 
 ### What is Inlist?
 ***
@@ -10,8 +9,6 @@
 * Create, organize, and share your collection of items you want.
 * Send friends personal reviews, item suggestions, and buying tips.
 * Discover similarly tagged items from other peoples' collections. 
-
-
 
 ### Adding an Item
 ***

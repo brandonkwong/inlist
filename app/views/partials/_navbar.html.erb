@@ -15,6 +15,7 @@
 
         <!-- Navbar Left -->
         <ul class="nav navbar-nav navbar-left">
+            <% if @static %>
             <!-- Enter Item URL (MetaInspector) -->
             <li>
                 <form class="navbar-form navbar-left" action="items/new">
@@ -24,6 +25,7 @@
                     </div>
                 </form>
             </li>
+            <% end %>
             <!-- Search InList -->
             <li>
                 <form class="navbar-form navbar-left" role="search">
