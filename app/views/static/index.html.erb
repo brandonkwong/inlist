@@ -5,31 +5,54 @@
 <!-- Tag Query Results -->
 <%= render 'partials/tag_query' %>
 
-<!-- Collection -->
-<div data-ng-if="tagQuery.name == ''">
-<h2>InList / <%= current_user.username %></h2>
-<br>
-<!-- Collection -->
-<% @items.each do |i| %>
 
-    <!-- Collection Row -->
-    <% if @items.index(i) == 0 || (@items.index(i)+1) % 4 == 0 %>
-       <div class="row">
-    <% end %>
 
-    <!-- Items -->
-    <div class="col-md-3">
-        <div data-toggle="modal" data-target="#item-<%= i.id %>">
-            <div class="item-box">
-                <%= image_tag i.image, class: 'item-image' %>
-            </div>
+<!-- START TESTING -->
+
+<div data-ng-if="tagQuery.name === ''">
+
+    <h1>My Collection</h1>
+    <hr>
+
+    <div class="row items" data-ng-repeat="item in userItems.length/4 | row">
+        <div class="col-xs-3 item-box" data-ng-repeat="item in userItems.slice(4*$index, 4*$index+4)" data-ng-background-image="item.image" data-toggle="modal" data-target="#item-{{item.id}}">
+            <!-- FOR TESTING -->
+            <!-- <h4 style="color: red; position: absolute;">{{item.id}}</h4> -->
         </div>
     </div>
 
-    <!-- Collection Row End -->
-    <% if (@items.index(i)+1) % 4 == 0 %>
-        </div>
-    <% end %>
-
-<% end %>
 </div>
+
+
+<br><br>
+
+<!-- END TESTING -->
+
+
+
+
+<!-- Collection -->
+<!-- <div data-ng-if="tagQuery.name === ''"> -->
+<!-- <h2>InList / <%#= current_user.username %></h2> -->
+<!-- <br> -->
+
+<!-- Collection -->
+<%# @items.each do |i| %>
+
+    <!-- Collection Row -->
+    <!-- <%# if @items.index(i) == 0 || @items.index(i) % 4 == 0 %><div class="row"><%# end %> -->
+
+    <!-- Items -->
+    <!-- <div class="col-md-3"> -->
+        <!-- <div data-toggle="modal" data-target="#item-<%#= i.id %>"> -->
+            <!-- <div class="item-box"> -->
+                <%#= image_tag i.image, class: 'item-image' %>
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- Collection Row End -->
+    <!-- <%# if (@items.index(i)+1) % 4 == 0 || @items.index(i) == @items.count - 1 %></div><%# end %> -->
+
+<%# end %>
+<!-- </div> -->

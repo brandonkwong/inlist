@@ -8,19 +8,23 @@
       </div>
       <div class="modal-body">
 
+        <%= image_tag i.image, class: 'image-test' %>
 
+        <br>
 
+        Tags:
         <% i.tags.each do |t| %>
             #<%= t.name %>
         <% end %>
 
         <br><br>
-
+        
+        Description:
         <%= i.description %><br><br>
-        <%= link_to 'View This Item', i.url, target: '_blank' %>
+        <%= link_to 'View Source', i.url, target: '_blank' %>
         <br><br>
 
-        <%= image_tag i.image, class: 'image-test' %>
+        
 
 
         <br><br>
@@ -43,7 +47,7 @@
         <!-- Comment Form -->
         
         <%= form_for [i, @comment] do |f| %>
-            <%= f.text_area :comment, placeholder: 'comment goes here', class: 'form-control' %>
+            <%= f.text_area :comment, placeholder: 'Write a comment...', class: 'form-control' %>
             <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
 

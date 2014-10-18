@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :header
-
   respond_to :json
 
   def index
@@ -16,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @has_navbar = false
+    @navbar = false
     @user = User.new
     @is_signup = true
   end

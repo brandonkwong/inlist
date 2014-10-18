@@ -12,12 +12,17 @@
 
             <%= f.text_area :description, placeholder: 'Description (optional)', class: 'form-control' %>
 
+            <br>
+
             <%= fields_for @tag do |ff| %>
                 <% ff.text_field :name, placeholder: 'Tags', class: 'form-control' %>
             <% end %>
 
+            <br>
+
             <% if current_user.categories.exists? %>
-                <%= f.select(:category_id, @category_options, { :prompt => "Select a Category" }) %> 
+                <%= f.select(:category_id, @category_options, { :prompt => "Select a Category" }) %>
+                <br>
             <% end %>
 
             <%= f.hidden_field :title, value: @meta.title %>
@@ -25,13 +30,13 @@
             <%= f.hidden_field :url, value: @meta.url %>
 
             <!-- Update to have user be able to select from 4 images -->
-            <%= f.hidden_field :image, value: @item_image.first %>
+            <%#= f.hidden_field :image, value: @item_image.first %>
 
             <br>
 
             <%= f.submit 'Save Item', class: 'btn btn-primary' %>
 
-        <% end %>
+        <%# end %>
 
     </div>
 
@@ -41,9 +46,13 @@
 
         <% @item_image.each do |i| %>
             <!-- Update to have user be able to select from 4 images -->
-            <% if @item_image.index(i) < 1 %>
-                <%= image_tag i, class: 'item-image' %>
+            <% if @item_image.index(i) < 4 %>
+                <%= f.radio_button :image, i, checked: i == @item_image.first %> &nbsp;
+                <%= image_tag i, class: 'item-image' %><br>
+                <br>
             <% end %>
+        <% end %>
+
         <% end %>
 
     </div>

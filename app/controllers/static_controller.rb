@@ -1,7 +1,5 @@
 class StaticController < ApplicationController
 
-  before_action :header
-
   def index
     @static = true
     @tag_items = Item.all

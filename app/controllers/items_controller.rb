@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
   
-  before_action :header
-
   respond_to :json
 
   def index
@@ -44,7 +42,7 @@ class ItemsController < ApplicationController
             end   
           end
         end
-      #FASTIMAGE UNAVAILABLE for OG:IMAGE
+      # FASTIMAGE UNAVAILABLE for OG:IMAGE
       else
         # ARRAY OF IMAGES
         @meta.images.each do |i|

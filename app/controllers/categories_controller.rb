@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :header
 
   def index
     @categories = current_user.categories.all

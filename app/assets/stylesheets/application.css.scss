@@ -8,7 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require font-awesome
  *= require_self
  *= require_tree .
  */
@@ -20,6 +19,138 @@
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 @import url(http://fonts.googleapis.com/css?family=Yellowtail);
+
+// Mixins
+@mixin translate-center($x, $y) {
+  left: $x;
+  position: absolute;
+  top: $y;
+  -webkit-transform: translateX(-$x) translateY(-$y);
+  -moz-transform: translateX(-$x) translateY(-$y);
+  -ms-transform: translateX(-$x) translateY(-$y);
+  transform: translateX(-$x) translateY(-$y);
+}
+
+// Body
+body {
+  background: #e0e0de;
+  color: #222;
+
+  // Container
+  .main {
+    margin-top: 100px;
+  }
+
+  // Divider
+  hr {
+    border-color: #ccc;
+  }
+
+  // Forms
+  .form-control {
+    border: none;
+  }
+
+  .input-group-addon {
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+  }
+
+  .btn {
+    border-radius: 0;
+  }
+
+  // Navbar
+  .navbar {
+    background: #222;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 0.15em 0.5em rgba(0, 0, 0, 0.35);
+    
+    // Logo
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.75em;
+    }
+
+    // Forms
+    input {
+      border-radius: 0;
+      border: none !important;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
+      outline: none;
+    }
+
+    input:focus + .input-group-addon {
+      color: #428bca;
+    }
+
+    // Links
+    .navbar-link {
+      a, a:hover, a:focus {
+        color: #fff;
+      }
+    }
+
+    .fa-asterisk, .fa-th-list {
+      color: #fff;
+    }
+
+    // Dropdown
+    .dropdown-menu {
+      margin-top: 10px;
+    }
+
+    .dropdown-menu:after {
+      border-bottom: 9px solid #fff;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: -9px;
+      right: 11px;
+    }
+  }
+
+  // Navbar Highlights
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #222;
+    color: #fff;
+  }
+
+  // Item Displays
+  .items {
+    margin-left: -1%;
+    margin-right: -1%;
+
+    .item-box {
+      // Note: For 3 column bs grid view,
+      // change default width of 33.333333% to 29.33333333%
+      // in order to allow for 2% margins
+      border: 10px solid #fff;
+      cursor: pointer;
+      margin: 1%;
+      padding-bottom: 27.33333333%;
+      width: 23%;
+    }
+  }
+
+}
+
+
+
+
+
+
 
 .welcome {
     background: image-url("Top_view.jpg") no-repeat center center fixed;
@@ -44,17 +175,7 @@ body.modal-open #wrap{
   
 .modal-backdrop {background: #f7f7f7;}
 
-.item-box {
-  height: 300px;
-  margin-bottom: 2em;
-  overflow: hidden;
-  width: 100%;
 
-  .item-image {
-    cursor: pointer;
-    max-width: 100%;
-  }
-}
 
 .tag {
   display: inline;
