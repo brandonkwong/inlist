@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :header
 
   def index
     @comment = Comment.new

@@ -5,7 +5,7 @@ gem 'rails', '4.0.4'
 
 # Twitter Bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # AngularJS
 gem 'angularjs-rails'
@@ -58,4 +58,4 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 
 # Ruby Version
-ruby "2.1.2"
+ruby '2.1.2'

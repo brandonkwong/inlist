@@ -11,6 +11,11 @@
         <%= csrf_meta_tags %>
     </head>
     <body class="<%= params[:controller] %>_controller" data-ng-controller="InListCtrl">
+
+        <!-- Initialize currentUser -->
+        <% if current_user %>
+            <div data-ng-init="currentUser = <%= current_user.id %>"></div>
+        <% end %>
         
         <!-- Login -->
         <%= render 'partials/login' %>
@@ -19,7 +24,7 @@
         <%= render 'partials/navbar' %>
           
         <!-- Content -->
-        <div class="container">
+        <div class="container main">
             <%= yield %>
         </div>
 

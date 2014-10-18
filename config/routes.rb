@@ -1,4 +1,5 @@
 Inlist::Application.routes.draw do
+
   # APIs
   scope '/api' do
     resources :users, only: :index, defaults: { format: :json }
@@ -34,4 +35,5 @@ Inlist::Application.routes.draw do
 
   # Root
   root 'static#index'
+  
 end

@@ -3,24 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #serialization_scope :view_context
+  before_action :navbar
+  helper_method :current_user
 
   private
-
-  helper_method :current_user
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  # Variables for navbar
-  def header
-    @has_navbar = true
+  def navbar
     @user_login = User.new
     @is_login = true
-    if current_user
-      @categories = current_user.categories.all
-    end
+    @categories = current_user.categories.all if current_user
   end
 
   # Default for Active Model Serializers
