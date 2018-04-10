@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.2.7.1'
 
 # Twitter Bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -58,4 +58,4 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 
 # Ruby Version
-ruby '2.1.2'
+ruby '2.2.5'

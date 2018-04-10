@@ -16,3 +16,6 @@
 /tmp
 /vendor
 .env
+
+# IDE
+.idea
